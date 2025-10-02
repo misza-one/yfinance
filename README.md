@@ -45,6 +45,18 @@
 - `Sector` and `Industry`: sector and industry information
 - `EquityQuery` and `Screener`: build query to screen market
 
+## MCP Server (Model Context Protocol)
+
+This fork includes a Docker-based MCP server that exposes yfinance through the Model Context Protocol, providing 20 tools for AI assistants like Claude Code:
+
+- **Basic Data**: ticker info, historical prices, financials, recommendations
+- **Corporate Actions**: dividends, splits, capital gains
+- **Earnings & Analysis**: earnings data, earnings dates, analyst price targets
+- **Ownership**: institutional holders, major holders, insider transactions
+- **Market Data**: news, options chains, options expiration dates
+
+See [README-MCP.md](README-MCP.md) for setup and usage instructions.
+
 ## Installation
 
 Install `yfinance` from PYPI using `pip`:

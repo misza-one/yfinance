@@ -1,0 +1,56 @@
+name: yfinance-custom
+displayName: YFinance Custom Catalog
+registry:
+  yfinance:
+    description: "Yahoo Finance MCP server providing comprehensive market data access with 20 tools for stock analysis, earnings, dividends, and options"
+    title: "Yahoo Finance"
+    type: "server"
+    dateAdded: "2025-10-02T00:00:00Z"
+    image: "yfinance-mcp:latest"
+
+    # Tools provided by this server (20 total)
+    tools:
+      # Basic Data
+      - name: "get_ticker_info"
+      - name: "get_ticker_history"
+      - name: "get_ticker_financials"
+      - name: "get_ticker_recommendations"
+      - name: "download_multiple"
+      - name: "search_tickers"
+      # Corporate Actions
+      - name: "get_ticker_dividends"
+      - name: "get_ticker_splits"
+      - name: "get_ticker_actions"
+      - name: "get_ticker_capital_gains"
+      # Earnings & Analysis
+      - name: "get_ticker_earnings"
+      - name: "get_ticker_earnings_dates"
+      - name: "get_ticker_analyst_price_targets"
+      # Ownership
+      - name: "get_ticker_institutional_holders"
+      - name: "get_ticker_major_holders"
+      - name: "get_ticker_insider_transactions"
+      # Market Data
+      - name: "get_ticker_news"
+      - name: "get_ticker_options"
+      - name: "get_ticker_option_chain"
+      # Other
+      - name: "get_ticker_isin"
+
+    # Command line arguments for stdio transport
+    command:
+      - "python"
+      - "-u"
+      - "/app/mcp_stdio_server.py"
+
+    # Metadata
+    metadata:
+      category: "finance"
+      tags: ["finance", "stocks", "market-data", "yahoo-finance", "trading"]
+      license: "Apache License 2.0"
+      owner: "misza-one"
+
+    # Documentation links
+    readme: "https://github.com/misza-one/yfinance/blob/main/README-MCP.md"
+    source: "https://github.com/misza-one/yfinance"
+    upstream: "https://github.com/ranaroussi/yfinance"

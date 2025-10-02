@@ -1,0 +1,12 @@
+services:
+  yfinance-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host
+    container_name: yfinance-mcp-server
+    stdin_open: true
+    tty: false
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped

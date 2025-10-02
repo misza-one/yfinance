@@ -531,6 +531,11 @@ class MCPServer:
         method = request.get("method", "")
         params = request.get("params", {})
 
+        # Handle notifications (no response needed)
+        if method.startswith("notifications/"):
+            logging.debug(f"Received notification: {method}")
+            return None
+
         if method == "initialize":
             return self.handle_initialize(params)
         elif method == "tools/list":
@@ -555,17 +560,19 @@ class MCPServer:
 
                 result = self.handle_request(request)
 
-                response = {
-                    "jsonrpc": "2.0",
-                    "id": request.get("id"),
-                    "result": result
-                }
+                # Only send response for requests, not notifications
+                if result is not None:
+                    response = {
+                        "jsonrpc": "2.0",
+                        "id": request.get("id"),
+                        "result": result
+                    }
 
-                response_json = json.dumps(response)
-                logging.debug(f"Sending: {response_json}")
+                    response_json = json.dumps(response)
+                    logging.debug(f"Sending: {response_json}")
 
-                sys.stdout.write(response_json + "\n")
-                sys.stdout.flush()
+                    sys.stdout.write(response_json + "\n")
+                    sys.stdout.flush()
 
             except json.JSONDecodeError as e:
                 logging.error(f"Invalid JSON: {e}")

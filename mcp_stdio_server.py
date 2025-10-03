@@ -286,6 +286,248 @@ class MCPServer:
                     },
                     "required": ["symbol"]
                 }
+            },
+            {
+                "name": "get_ticker_fast_info",
+                "description": "Get fast access to key metrics (price, market cap, etc.) without full info load",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_calendar",
+                "description": "Get calendar of events including earnings dates, ex-dividend dates, and other corporate events",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_recommendations_summary",
+                "description": "Get aggregated analyst recommendations summary (buy/hold/sell counts)",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_upgrades_downgrades",
+                "description": "Get recent analyst rating changes (upgrades and downgrades)",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_quarterly_earnings",
+                "description": "Get quarterly earnings data for a ticker",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_sec_filings",
+                "description": "Get links to SEC filings (10-K, 10-Q, 8-K, etc.)",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_earnings_estimate",
+                "description": "Get future earnings estimates from analysts",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_revenue_estimate",
+                "description": "Get future revenue estimates from analysts",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_mutualfund_holders",
+                "description": "Get mutual fund ownership data for a ticker",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_sustainability",
+                "description": "Get ESG (Environmental, Social, Governance) scores and sustainability data",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_earnings_history",
+                "description": "Get historical earnings vs estimates performance",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_eps_trend",
+                "description": "Get EPS (Earnings Per Share) trend analysis",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_eps_revisions",
+                "description": "Get earnings estimate revisions from analysts",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_growth_estimates",
+                "description": "Get growth projections and estimates",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_quarterly_income_stmt",
+                "description": "Get quarterly income statement data",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_quarterly_balance_sheet",
+                "description": "Get quarterly balance sheet data for quarter-over-quarter analysis",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_quarterly_cash_flow",
+                "description": "Get quarterly cash flow statement data",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_ttm_income_stmt",
+                "description": "Get trailing twelve months (TTM) income statement for current performance",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_ttm_cash_flow",
+                "description": "Get trailing twelve months (TTM) cash flow statement",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_insider_purchases",
+                "description": "Get insider buying activity (smart money signals)",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_insider_roster_holders",
+                "description": "Get current insider position holders and their roles",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
+            },
+            {
+                "name": "get_ticker_shares_full",
+                "description": "Get full share count history to track dilution over time",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "symbol": {"type": "string", "description": "Stock ticker symbol"}
+                    },
+                    "required": ["symbol"]
+                }
             }
         ]
 
@@ -296,6 +538,24 @@ class MCPServer:
         if isinstance(df.index, pd.DatetimeIndex):
             df = df.reset_index()
         return json.loads(df.to_json(orient='records', date_format='iso'))
+
+    def serialize_value(self, value):
+        """Convert any Python object to JSON-serializable format"""
+        import datetime
+        if value is None:
+            return None
+        elif isinstance(value, (datetime.date, datetime.datetime)):
+            return value.isoformat()
+        elif isinstance(value, dict):
+            return {k: self.serialize_value(v) for k, v in value.items()}
+        elif isinstance(value, (list, tuple)):
+            return [self.serialize_value(v) for v in value]
+        elif isinstance(value, pd.DataFrame):
+            return self.df_to_dict(value)
+        elif isinstance(value, pd.Series):
+            return self.df_to_dict(value.to_frame())
+        else:
+            return value
 
     def handle_initialize(self, params: dict) -> dict:
         """Handle initialize request"""
@@ -497,6 +757,162 @@ class MCPServer:
                 result = {
                     "symbol": arguments["symbol"],
                     "isin": ticker.isin
+                }
+
+            elif tool_name == "get_ticker_fast_info":
+                ticker = yf.Ticker(arguments["symbol"])
+                fast_info = ticker.fast_info
+                result = {
+                    "symbol": arguments["symbol"],
+                    "fast_info": dict(fast_info) if fast_info else {}
+                }
+
+            elif tool_name == "get_ticker_calendar":
+                ticker = yf.Ticker(arguments["symbol"])
+                calendar = ticker.calendar
+                result = {
+                    "symbol": arguments["symbol"],
+                    "calendar": self.serialize_value(calendar) if calendar else {}
+                }
+
+            elif tool_name == "get_ticker_recommendations_summary":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "recommendations_summary": self.df_to_dict(ticker.recommendations_summary)
+                }
+
+            elif tool_name == "get_ticker_upgrades_downgrades":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "upgrades_downgrades": self.df_to_dict(ticker.upgrades_downgrades)
+                }
+
+            elif tool_name == "get_ticker_quarterly_earnings":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "quarterly_earnings": self.df_to_dict(ticker.quarterly_earnings)
+                }
+
+            elif tool_name == "get_ticker_sec_filings":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "sec_filings": self.serialize_value(ticker.sec_filings)
+                }
+
+            elif tool_name == "get_ticker_earnings_estimate":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "earnings_estimate": self.df_to_dict(ticker.earnings_estimate)
+                }
+
+            elif tool_name == "get_ticker_revenue_estimate":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "revenue_estimate": self.df_to_dict(ticker.revenue_estimate)
+                }
+
+            elif tool_name == "get_ticker_mutualfund_holders":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "mutualfund_holders": self.df_to_dict(ticker.mutualfund_holders)
+                }
+
+            elif tool_name == "get_ticker_sustainability":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "sustainability": self.df_to_dict(ticker.sustainability)
+                }
+
+            elif tool_name == "get_ticker_earnings_history":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "earnings_history": self.df_to_dict(ticker.earnings_history)
+                }
+
+            elif tool_name == "get_ticker_eps_trend":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "eps_trend": self.df_to_dict(ticker.eps_trend)
+                }
+
+            elif tool_name == "get_ticker_eps_revisions":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "eps_revisions": self.df_to_dict(ticker.eps_revisions)
+                }
+
+            elif tool_name == "get_ticker_growth_estimates":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "growth_estimates": self.df_to_dict(ticker.growth_estimates)
+                }
+
+            elif tool_name == "get_ticker_quarterly_income_stmt":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "quarterly_income_stmt": self.df_to_dict(ticker.quarterly_income_stmt)
+                }
+
+            elif tool_name == "get_ticker_quarterly_balance_sheet":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "quarterly_balance_sheet": self.df_to_dict(ticker.quarterly_balance_sheet)
+                }
+
+            elif tool_name == "get_ticker_quarterly_cash_flow":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "quarterly_cash_flow": self.df_to_dict(ticker.quarterly_cash_flow)
+                }
+
+            elif tool_name == "get_ticker_ttm_income_stmt":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "ttm_income_stmt": self.df_to_dict(ticker.ttm_income_stmt)
+                }
+
+            elif tool_name == "get_ticker_ttm_cash_flow":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "ttm_cash_flow": self.df_to_dict(ticker.ttm_cash_flow)
+                }
+
+            elif tool_name == "get_ticker_insider_purchases":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "insider_purchases": self.df_to_dict(ticker.insider_purchases)
+                }
+
+            elif tool_name == "get_ticker_insider_roster_holders":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "insider_roster_holders": self.df_to_dict(ticker.insider_roster_holders)
+                }
+
+            elif tool_name == "get_ticker_shares_full":
+                ticker = yf.Ticker(arguments["symbol"])
+                result = {
+                    "symbol": arguments["symbol"],
+                    "shares_full": self.df_to_dict(ticker.shares)
                 }
 
             else:

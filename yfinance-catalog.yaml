@@ -1,0 +1,60 @@
+registry:
+  yfinance:
+    title: Yahoo Finance
+    description: Yahoo Finance MCP server providing stock market data, historical prices, financial statements, analyst recommendations, and company information
+    image: yfinance-mcp:latest
+    type: server
+    dateAdded: "2025-10-02T22:00:00Z"
+    metadata:
+      category: finance
+      license: Apache License 2.0
+      owner: local
+      tags:
+        - finance
+        - stocks
+        - market-data
+    tools:
+      - name: get_ticker_info
+      - name: get_ticker_history
+      - name: get_ticker_financials
+      - name: get_ticker_recommendations
+      - name: download_multiple
+      - name: search_tickers
+      - name: get_ticker_dividends
+      - name: get_ticker_splits
+      - name: get_ticker_actions
+      - name: get_ticker_capital_gains
+      - name: get_ticker_earnings
+      - name: get_ticker_earnings_dates
+      - name: get_ticker_analyst_price_targets
+      - name: get_ticker_institutional_holders
+      - name: get_ticker_major_holders
+      - name: get_ticker_insider_transactions
+      - name: get_ticker_news
+      - name: get_ticker_options
+      - name: get_ticker_option_chain
+      - name: get_ticker_isin
+      - name: get_ticker_fast_info
+      - name: get_ticker_calendar
+      - name: get_ticker_recommendations_summary
+      - name: get_ticker_upgrades_downgrades
+      - name: get_ticker_quarterly_earnings
+      - name: get_ticker_sec_filings
+      - name: get_ticker_earnings_estimate
+      - name: get_ticker_revenue_estimate
+      - name: get_ticker_mutualfund_holders
+      - name: get_ticker_sustainability
+      - name: get_ticker_earnings_history
+      - name: get_ticker_eps_trend
+      - name: get_ticker_eps_revisions
+      - name: get_ticker_growth_estimates
+      - name: get_ticker_quarterly_income_stmt
+      - name: get_ticker_quarterly_balance_sheet
+      - name: get_ticker_quarterly_cash_flow
+      - name: get_ticker_ttm_income_stmt
+      - name: get_ticker_ttm_cash_flow
+      - name: get_ticker_insider_purchases
+      - name: get_ticker_insider_roster_holders
+      - name: get_ticker_shares_full
+    prompts: 0
+    resources: {}

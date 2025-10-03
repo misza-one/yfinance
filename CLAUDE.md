@@ -164,7 +164,12 @@ docker-compose down
 
 ### MCP Configuration
 
-Claude Code connects via `.mcp.json`:
+There are **two ways** to configure the yfinance MCP server:
+
+#### Option 1: Direct Connection (Claude Code MCP Settings)
+
+For direct connection via Claude Code's `~/.claude/mcp-settings.json`:
+
 ```json
 {
   "mcpServers": {
@@ -176,10 +181,137 @@ Claude Code connects via `.mcp.json`:
 }
 ```
 
-After rebuilding the Docker image, always run:
+#### Option 2: Docker MCP Gateway (Recommended for Multiple Servers)
+
+For integration with Docker MCP Gateway to combine multiple MCP servers:
+
+**Step 1: Create Custom Catalog File**
+
+Create `yfinance-catalog.yaml` in your project directory:
+
+```yaml
+registry:
+  yfinance:
+    title: Yahoo Finance
+    description: Yahoo Finance MCP server providing stock market data
+    image: yfinance-mcp:latest
+    type: server
+    dateAdded: "2025-10-02T22:00:00Z"
+    metadata:
+      category: finance
+      license: Apache License 2.0
+      owner: local
+      tags:
+        - finance
+        - stocks
+        - market-data
+    tools:
+      - name: get_ticker_info
+      - name: get_ticker_history
+      # ... (list all 20 tools)
+    prompts: 0
+    resources: {}
+```
+
+**Step 2: Enable Server in Gateway Registry**
+
+Add your server to `~/.docker/mcp/registry.yaml`:
+
+```yaml
+registry:
+  context7:
+    ref: ""
+  duckduckgo:
+    ref: ""
+  # ... other servers ...
+  yfinance:
+    ref: ""  # Add this line to enable yfinance server
+```
+
+**Step 3: Build and Tag Docker Image**
+
 ```bash
+# Build with docker-compose
+docker-compose up -d --build
+
+# Tag for gateway compatibility
 docker tag yfinance_yfinance-mcp:latest yfinance-mcp:latest
 ```
+
+**Step 4: Start Gateway with Custom Catalog**
+
+```bash
+# Manual start
+docker mcp gateway run \
+  --additional-catalog /home/misza/dev/yfinance/yfinance-catalog.yaml \
+  --transport http
+
+# Or via systemd service
+sudo systemctl start docker-mcp-gateway.service
+```
+
+**Step 5: Configure Systemd Service (Optional)**
+
+Create/edit `/etc/systemd/system/docker-mcp-gateway.service`:
+
+```ini
+[Unit]
+Description=Docker MCP Gateway
+After=docker.service network-online.target
+Requires=docker.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=misza
+Group=docker
+WorkingDirectory=/home/misza
+
+# Loads all servers from default catalog + custom yfinance catalog
+ExecStart=/usr/bin/docker mcp gateway run \
+  --additional-catalog /home/misza/dev/yfinance/yfinance-catalog.yaml \
+  --transport http
+
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Enable and start:
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable docker-mcp-gateway.service
+sudo systemctl start docker-mcp-gateway.service
+```
+
+**Important Notes:**
+
+1. **Registry vs Catalog**:
+   - **Catalog** defines WHAT servers exist (image, tools, metadata)
+   - **Registry** defines WHICH servers are enabled
+
+2. **Image Tagging**: Always retag after rebuilding:
+   ```bash
+   docker tag yfinance_yfinance-mcp:latest yfinance-mcp:latest
+   ```
+
+3. **Gateway reads THREE sources**:
+   - Default catalog: `~/.docker/mcp/catalogs/docker-mcp.yaml`
+   - Custom catalogs: via `--additional-catalog` flag
+   - Registry: `~/.docker/mcp/registry.yaml` (controls which servers are active)
+
+4. **Verification**:
+   ```bash
+   # Check gateway logs
+   journalctl -u docker-mcp-gateway.service -f
+
+   # Should show: "Those servers are enabled: context7, duckduckgo, ..., yfinance"
+   # Should show: "> yfinance: (20 tools)"
+   ```
 
 ## Common Patterns
 
